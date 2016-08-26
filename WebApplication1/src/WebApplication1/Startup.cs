@@ -38,6 +38,7 @@ namespace WebApplication1
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+            Task.Delay(100000).Wait();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
