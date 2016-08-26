@@ -71,13 +71,13 @@ call :ExecuteCmd nuget.exe restore "%DEPLOYMENT_SOURCE%\WebApplication1\WebAppli
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Build and publish
-call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\WebApplication1\src\ConsoleApp1.xproj" /nologo /verbosity:m /p:deployOnBuild=True;AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false;publishUrl="%DEPLOYMENT_TEMP%/CONSOLE" %SCM_BUILD_ARGS%
+call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\WebApplication1\src\ConsoleApp1\ConsoleApp1.xproj" /nologo /verbosity:m /p:deployOnBuild=True;AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false;publishUrl="%DEPLOYMENT_TEMP%/CONSOLE" %SCM_BUILD_ARGS%
 IF !ERRORLEVEL! NEQ 0 goto error
 
 call :ExecuteCmd dotnet "%DEPLOYMENT_TEMP%/CONSOLE/ConsoleApp1.dll"
 
 :: 2. Build and publish
-call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\WebApplication1\src\WebApplication1.xproj" /nologo /verbosity:m /p:deployOnBuild=True;AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false;publishUrl="%DEPLOYMENT_TEMP%/API" %SCM_BUILD_ARGS%
+call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\WebApplication1\src\WebApplication1\WebApplication1.xproj" /nologo /verbosity:m /p:deployOnBuild=True;AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false;publishUrl="%DEPLOYMENT_TEMP%/API" %SCM_BUILD_ARGS%
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 3. KuduSync
